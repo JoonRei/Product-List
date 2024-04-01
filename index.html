@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 class="title">Activity 03 - Manriquez Product List</h1>
+  <div id="app" class="container">
+    <div class="product-list">
+      <div class="product" v-for="(product, index) in products" :key="index">
+        <img :src="product.image" alt="product image" class="product-image">
+        <div class="product-details">
+          <span class="product-quantity">{{ product.quantity }}</span>
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+        </div>
+        <div class="product-buttons">
+          <button @click="toggleExpired(product)" class="btn btn-toggle-expired" :class="{ 'expired': product.isExpired }">
+            {{ product.isExpired ? 'Unexpire' : 'Expire' }}
+          </button>
+          <button @dblclick="hideProduct(index)" class="btn btn-remove-product">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
